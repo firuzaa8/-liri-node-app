@@ -42,6 +42,11 @@ function doAction() {
 function music() {
     var Spotify = require('node-spotify-api');
     var spotify = new Spotify(keys.spotify);
+
+    if (value == undefined) {
+        value = "The Sign - Ace of Base";
+    }
+
     spotify.search({ type: 'track', query: value }, function (err, data) {
         if (err) {
             return console.log('Error occurred: ' + err);
@@ -55,11 +60,14 @@ function music() {
             preview = "(not available)";
         }
         var album = song.album.name;
-
+        console.log("--------------------------------------------------------------------------------------------------------------------------");
+        console.log("--------------------------------------------------------------------------------------------------------------------------");
         console.log("Artist: " + artist);
         console.log("Title: " + songName);
         console.log("Album: " + album);
         console.log("Preview: " + preview);
+        console.log("--------------------------------------------------------------------------------------------------------------------------");
+        console.log("--------------------------------------------------------------------------------------------------------------------------");
     });
 
 }
